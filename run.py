@@ -10,12 +10,22 @@ from oci.signer import Signer
 client = discord.Client()
 token = "MTAwMzYwNDMxODQ0NTkwODAzOQ.GcKc2Y.vgVwqVtcSL-SwJq-fTQvJLo9V44fxI0R4zDpuY"
 
+
 @client.event
 async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
     print('------')
+
+    successcount = 0
+    befleg = 0
+    nowleg = 0
+
+
+    nowleg = listit()
+    befleg = nowleg
+
 
     while True:
         
@@ -26,14 +36,19 @@ async def on_ready():
                 count = int(line.strip())
 
         print(count)
-
-        if listit() == 0:
-            await channel.send(str(count) + "번째 시도중.. ")
-            count+=1
+        
+        if successcount <=1:
+            await channel.send(str(count) + "번째 시도중.. "+str(successcount)+"번 성공")
             fff = makeit()
             await channel.send(fff)
-        else:
-            await channel.send(str(count) + "번째 성공!  " + "@everyone")
+
+            nowleg = listit()
+
+            if nowleg != befleg:
+                await channel.send(str(count) + "번째 성공!  " + "@everyone")
+                successcount += 1
+                befleg = nowleg
+            count+=1
 
         f = open("count.txt", 'w')
         f.write(str(count))
