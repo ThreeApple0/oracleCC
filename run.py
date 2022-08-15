@@ -37,7 +37,7 @@ async def on_ready():
 
         print(count)
         
-        if successcount <=1:
+        if successcount <=0:
             await channel.send(str(count) + "번째 시도중.. "+str(successcount)+"번 성공")
             fff = makeit()
             await channel.send(fff)
@@ -106,7 +106,7 @@ def makeit():
     endpoint = 'https://iaas.ap-chuncheon-1.oraclecloud.com/20160918/instances/'
 
     # body
-    body = {"metadata":{},"shape":"VM.Standard.A1.Flex","compartmentId":"ocid1.tenancy.oc1..aaaaaaaakadgkyqp3tm3vtikg5p36wcnjnbouw2wx4nt4jjcqucdfkv7ql3q","displayName":"instance-20220801-2203","availabilityDomain":"xpcb:AP-CHUNCHEON-1-AD-1","sourceDetails":{"sourceType":"image","imageId":"ocid1.image.oc1.ap-chuncheon-1.aaaaaaaat4c7qhin3nizrh3bljfnh2tjrrcwc6gwdazli3rwzli2mgd4tpca"},"isPvEncryptionInTransitEnabled":True,"createVnicDetails":{"assignPublicIp":False,"subnetId":"ocid1.subnet.oc1.ap-chuncheon-1.aaaaaaaa2cclka6nroegki2gnlkdndy5hioh26exoj4kjqq2ojacvg7i6vpq","assignPrivateDnsRecord":True},"agentConfig":{"pluginsConfig":[{"name":"Vulnerability Scanning","desiredState":"DISABLED"},{"name":"Oracle Java Management Service","desiredState":"DISABLED"},{"name":"Oracle Autonomous Linux","desiredState":"DISABLED"},{"name":"OS Management Service Agent","desiredState":"ENABLED"},{"name":"Compute Instance Run Command","desiredState":"ENABLED"},{"name":"Compute Instance Monitoring","desiredState":"ENABLED"},{"name":"Block Volume Management","desiredState":"DISABLED"},{"name":"Bastion","desiredState":"DISABLED"}],"isMonitoringDisabled":False,"isManagementDisabled":False},"definedTags":{},"freeformTags":{},"instanceOptions":{"areLegacyImdsEndpointsDisabled":False},"availabilityConfig":{"recoveryAction":"RESTORE_INSTANCE"},"shapeConfig":{"ocpus":2,"memoryInGBs":12}}
+    body = {"metadata":{},"shape":"VM.Standard.A1.Flex","compartmentId":"ocid1.tenancy.oc1..aaaaaaaakadgkyqp3tm3vtikg5p36wcnjnbouw2wx4nt4jjcqucdfkv7ql3q","displayName":"instance-20220801-2203","availabilityDomain":"xpcb:AP-CHUNCHEON-1-AD-1","sourceDetails":{"sourceType":"image","imageId":"ocid1.image.oc1.ap-chuncheon-1.aaaaaaaat4c7qhin3nizrh3bljfnh2tjrrcwc6gwdazli3rwzli2mgd4tpca"},"isPvEncryptionInTransitEnabled":True,"createVnicDetails":{"assignPublicIp":False,"subnetId":"ocid1.subnet.oc1.ap-chuncheon-1.aaaaaaaa2cclka6nroegki2gnlkdndy5hioh26exoj4kjqq2ojacvg7i6vpq","assignPrivateDnsRecord":True},"agentConfig":{"pluginsConfig":[{"name":"Vulnerability Scanning","desiredState":"DISABLED"},{"name":"Oracle Java Management Service","desiredState":"DISABLED"},{"name":"Oracle Autonomous Linux","desiredState":"DISABLED"},{"name":"OS Management Service Agent","desiredState":"ENABLED"},{"name":"Compute Instance Run Command","desiredState":"ENABLED"},{"name":"Compute Instance Monitoring","desiredState":"ENABLED"},{"name":"Block Volume Management","desiredState":"DISABLED"},{"name":"Bastion","desiredState":"DISABLED"}],"isMonitoringDisabled":False,"isManagementDisabled":False},"definedTags":{},"freeformTags":{},"instanceOptions":{"areLegacyImdsEndpointsDisabled":False},"availabilityConfig":{"recoveryAction":"RESTORE_INSTANCE"},"shapeConfig":{"ocpus":1,"memoryInGBs":6}}
 
     # request 보내기, 해당 API는 post method를 요구합니다.
     response = requests.post(endpoint, json=body, auth=auth)
